@@ -41,5 +41,10 @@ SELECT id FROM employees.work_results WHERE Q1='E' or Q2='E' or Q3='E' or Q4='E'
 SELECT MAX(pay_level) FROM employees.employees;
 SELECT name FROM employees.departments ORDER BY size DESC LIMIT 1;
 SELECT * FROM employees.employees ORDER BY datediff(now(),working_start) DESC;
-SELECT level,AVG(pay_level) FROM employees.employees GROUP BY level
-SELECT level,AVG(pay_level) FROM employees.employees GROUP BY level
+SELECT level,AVG(pay_level) FROM employees.employees GROUP BY level;
+SELECT level,AVG(pay_level) FROM employees.employees GROUP BY level;
+ALTER TABLE employees.employees ADD bonus INT(2) AFTER pay_level;
+
+select dst.id, dst.name, src.bonus from (employees as dst,
+(SELECT employee_id, REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CONCAT(Q1,Q2,Q3,Q4),'E','-0,1'),'A','+0.2'),'B','+0,1'),'C',''),'D','-0.1') as bonus FROM work_results
+) as src) WHERE dst.id=src.employee_id
