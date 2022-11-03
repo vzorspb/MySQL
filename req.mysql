@@ -1,4 +1,4 @@
-
+п»ї
 CREATE DATABASE  IF NOT EXISTS `employees`;
 USE `employees`;
 CREATE TABLE `departments` (
@@ -8,7 +8,7 @@ CREATE TABLE `departments` (
   `size` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-INSERT INTO `departments` VALUES (1,'Бухгалтерия',1,3),(2,'Отдел кадров',2,2),(3,'отдел Интеллектуального анализа данных',6,3);
+INSERT INTO `departments` VALUES (1,'Р‘СѓС…РіР°Р»С‚РµСЂРёСЏ',1,3),(2,'РћС‚РґРµР» РєР°РґСЂРѕРІ',2,2),(3,'РѕС‚РґРµР» РРЅС‚РµР»Р»РµРєС‚СѓР°Р»СЊРЅРѕРіРѕ Р°РЅР°Р»РёР·Р° РґР°РЅРЅС‹С…',6,3);
 CREATE TABLE `employees` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE `employees` (
   `permission` varchar(1) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
-INSERT INTO `employees` VALUES (1,'Иванов И.И.','1979-01-01','2020-05-08','lead','hi',800.00,1,'0'),(2,'Петров П.П.','1980-01-01','2021-03-02','lead','hi',800.00,2,'0'),(3,'Сидоров А.А.','1980-01-01','2021-03-02','middle','med',200.00,1,'0'),(4,'Васильев В.В.','1980-01-01','2021-03-02','middle','med',200.00,1,'0'),(5,'Адексеев А.А.','1980-01-01','2021-03-02','middle','med',200.00,2,'0'),(6,'Соколов Д.А.','1980-01-01','2021-03-02','lead','hi',900.00,3,'1'),(7,'Маслова А.А.','1980-01-01','2021-03-02','middle','hi',600.00,3,'1'),(8,'Степанов Д.Д.','1980-01-01','2021-03-02','middle','hi',500.00,3,'0');
+INSERT INTO `employees` VALUES (1,'РРІР°РЅРѕРІ Р.Р.','1979-01-01','2020-05-08','lead','hi',800.00,1,'0'),(2,'РџРµС‚СЂРѕРІ Рџ.Рџ.','1980-01-01','2021-03-02','lead','hi',800.00,2,'0'),(3,'РЎРёРґРѕСЂРѕРІ Рђ.Рђ.','1980-01-01','2021-03-02','middle','med',200.00,1,'0'),(4,'Р’Р°СЃРёР»СЊРµРІ Р’.Р’.','1980-01-01','2021-03-02','middle','med',200.00,1,'0'),(5,'РђРґРµРєСЃРµРµРІ Рђ.Рђ.','1980-01-01','2021-03-02','middle','med',200.00,2,'0'),(6,'РЎРѕРєРѕР»РѕРІ Р”.Рђ.','1980-01-01','2021-03-02','lead','hi',900.00,3,'1'),(7,'РњР°СЃР»РѕРІР° Рђ.Рђ.','1980-01-01','2021-03-02','middle','hi',600.00,3,'1'),(8,'РЎС‚РµРїР°РЅРѕРІ Р”.Р”.','1980-01-01','2021-03-02','middle','hi',500.00,3,'0');
 
 CREATE TABLE `work_results` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -34,9 +34,9 @@ CREATE TABLE `work_results` (
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 INSERT INTO `work_results` VALUES (1,1,'E','D','A','E'),(2,2,'E','B','A','C');
 
-SELECT id, name as 'Ф.И.О.', ROUND(datediff(now(),working_start)/365-0.5) as 'Стаж'  FROM employees.employees;
-SELECT id, name as 'Ф.И.О.', ROUND(datediff(now(),working_start)/365-0.5) as 'Стаж'  FROM employees.employees limit 3;
-SELECT employees.id FROM employees JOIN departments on department_id=departments.id where departments.name='водители'
+SELECT id, name as 'Р¤.Р.Рћ.', ROUND(datediff(now(),working_start)/365-0.5) as 'РЎС‚Р°Р¶'  FROM employees.employees;
+SELECT id, name as 'Р¤.Р.Рћ.', ROUND(datediff(now(),working_start)/365-0.5) as 'РЎС‚Р°Р¶'  FROM employees.employees limit 3;
+SELECT employees.id FROM employees JOIN departments on department_id=departments.id where departments.name='РІРѕРґРёС‚РµР»Рё'
 SELECT id FROM employees.work_results WHERE Q1='E' or Q2='E' or Q3='E' or Q4='E';
 SELECT MAX(pay_level) FROM employees.employees;
 SELECT name FROM employees.departments ORDER BY size DESC LIMIT 1;
