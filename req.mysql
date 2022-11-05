@@ -45,6 +45,9 @@ SELECT level,AVG(pay_level) FROM employees.employees GROUP BY level;
 SELECT level,AVG(pay_level) FROM employees.employees GROUP BY level;
 ALTER TABLE employees.employees ADD bonus INT(2) AFTER pay_level;
 
-select dst.id, dst.name, src.bonus from (employees as dst,
-(SELECT employee_id, REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CONCAT(Q1,Q2,Q3,Q4),'E','-0,1'),'A','+0.2'),'B','+0,1'),'C',''),'D','-0.1') as bonus FROM work_results
-) as src) WHERE dst.id=src.employee_id
+SELECT *, 
+ (CASE  WHEN `Q1`='A' THEN '0.2'  WHEN `Q1`='B' THEN '0.1' WHEN `Q1`='C' THEN '0' WHEN `Q1`='D' THEN '-0.1' WHEN `Q1`='E' THEN '-0.2' END) +
+ (CASE  WHEN `Q2`='A' THEN '0.2'  WHEN `Q2`='B' THEN '0.1' WHEN `Q2`='C' THEN '0' WHEN `Q2`='D' THEN '-0.1' WHEN `Q2`='E' THEN '-0.2' END) +
+ (CASE  WHEN `Q3`='A' THEN '0.2'  WHEN `Q3`='B' THEN '0.1' WHEN `Q3`='C' THEN '0' WHEN `Q3`='D' THEN '-0.1' WHEN `Q3`='E' THEN '-0.2' END) +
+ (CASE  WHEN `Q4`='A' THEN '0.2'  WHEN `Q4`='B' THEN '0.1' WHEN `Q4`='C' THEN '0' WHEN `Q4`='D' THEN '-0.1' WHEN `Q4`='E' THEN '-0.2' END) as bonus
+FROM employees.work_results;
