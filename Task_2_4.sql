@@ -28,10 +28,7 @@ ALTER TABLE `employees`.`employees`
 CHANGE COLUMN `bonus` `bonus` DECIMAL(5,2) NULL DEFAULT NULL ;
 ALTER TABLE `employees`.`employees` 
 ADD COLUMN `salary_index` DECIMAL(5,2) NULL AFTER `pay_level`;
-CREATE TEMPORARY TABLE `tmp_table` (
-`id` int(11),
-`bonus` DECIMAL(5,2));
-INSERT INTO `tmp_table`
+CREATE TEMPORARY TABLE `tmp_table` AS
 (SELECT t1.id, t2.bonus FROM employees as t1 JOIN
 (SELECT employee_id, 
  (CASE  WHEN `Q1`='A' THEN '0.2'  WHEN `Q1`='B' THEN '0.1' WHEN `Q1`='C' THEN '0' WHEN `Q1`='D' THEN '-0.1' WHEN `Q1`='E' THEN '-0.2' END) +
